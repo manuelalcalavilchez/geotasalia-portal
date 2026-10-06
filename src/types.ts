@@ -31,6 +31,22 @@ export interface TypographyConfig {
 }
 
 export interface ProjectConfig {
+  // General / branding
+  brandName?: string;
+  brandTagline?: string;
+  heroEyebrow?: string;
+  toolsSectionTitle?: string;
+  toolsSectionDescription?: string;
+  servicesSectionTitle?: string;
+  servicesSectionDescription?: string;
+  contactSectionTitle?: string;
+  contactSectionDescription?: string;
+  footerCopyright?: string;
+  footerCredit?: string;
+  // SEO / browser
+  seoTitle?: string;
+  seoDescription?: string;
+  faviconUrl?: string;
   // URLs
   kDriveUrl: string;
   externalGeovisorUrl: string;
