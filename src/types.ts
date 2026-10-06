@@ -46,6 +46,9 @@ export interface ProjectConfig {
   socialInstagram?: string;
   socialLinkedIn?: string;
   socialFacebook?: string;
+  socialInstagram?: string;
+  socialLinkedIn?: string;
+  socialFacebook?: string;
   // SEO / browser
   seoTitle?: string;
   seoDescription?: string;
