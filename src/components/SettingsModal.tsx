@@ -19,12 +19,12 @@ function generateId() {
 export default function SettingsModal({ isOpen, onClose, config, onSave }: SettingsModalProps) {
   const [formData, setFormData] = useState<ProjectConfig>({ ...config });
   const [success, setSuccess] = useState(false);
-  const [activeTab, setActiveTab] = useState<Tab>('contacto');
+  const [activeTab, setActiveTab] = useState<Tab>('general');
 
   React.useEffect(() => {
     if (isOpen) {
       setFormData({ ...DEFAULT_CONFIG, ...config });
-      setActiveTab('contacto');
+      setActiveTab('general');
     }
   }, [isOpen, config]);
 
