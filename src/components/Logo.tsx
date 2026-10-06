@@ -9,7 +9,7 @@ interface LogoProps {
   logoHalo?: number;
 }
 
-export default function Logo({ className = '', size = 'md', showText = true, customLogoUrl, logoScale = 100, logoHalo = 0 }: LogoProps) {
+export default function Logo({ className = '', size = 'md', showText = true, customLogoUrl, logoScale = 120, logoHalo = 0 }: LogoProps) {
   const dimensions = {
     sm: { svgSize: 40, textSize: 'text-lg', subSize: 'text-[8px]' },
     md: { svgSize: 64, textSize: 'text-2xl', subSize: 'text-xs' },
