@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ProjectConfig, ToolCard, ServiceCard, TypographyLayer } from '../types';
-import { X, Save, RotateCcw, Link2, FileUp, Palette, Phone, Mail, Type, Wrench, Plus, Trash2, ChevronUp, ChevronDown, ListChecks, LayoutGrid, CaseSensitive, KeyRound, Eye, EyeOff, SendHorizonal } from 'lucide-react';
+import { X, Save, RotateCcw, Link2, FileUp, Palette, Phone, Mail, Type, Wrench, Plus, Trash2, ChevronUp, ChevronDown, ListChecks, LayoutGrid, CaseSensitive, KeyRound, Eye, EyeOff, SendHorizonal, Globe, Search } from 'lucide-react';
 import { DEFAULT_CONFIG, AVAILABLE_ICONS, FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, SYSTEM_FONTS } from '../data';
 
 interface SettingsModalProps {
@@ -10,7 +10,7 @@ interface SettingsModalProps {
   onSave: (newConfig: ProjectConfig) => void;
 }
 
-type Tab = 'contacto' | 'herramientas' | 'servicios' | 'tarjetas' | 'urls' | 'estetica' | 'tipografia' | 'acceso' | 'smtp' | 'rgpd';
+type Tab = 'general' | 'contacto' | 'herramientas' | 'servicios' | 'tarjetas' | 'urls' | 'estetica' | 'tipografia' | 'acceso' | 'smtp' | 'rgpd' | 'seo';
 
 function generateId() {
   return Math.random().toString(36).slice(2, 9);
@@ -188,6 +188,7 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
   if (!isOpen) return null;
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
+    { id: 'general', label: 'General', icon: <Globe size={13} /> },
     { id: 'contacto', label: 'Contacto', icon: <Phone size={13} /> },
     { id: 'herramientas', label: 'Herramientas', icon: <Wrench size={13} /> },
     { id: 'servicios', label: 'Servicios', icon: <ListChecks size={13} /> },
@@ -198,11 +199,12 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
     { id: 'acceso', label: 'Acceso', icon: <KeyRound size={13} /> },
     { id: 'smtp', label: 'Email SMTP', icon: <SendHorizonal size={13} /> },
     { id: 'rgpd', label: 'RGPD', icon: <Type size={13} /> },
+    { id: 'seo', label: 'SEO / Navegador', icon: <Search size={13} /> },
   ];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm">
-      <div className="w-full max-w-6xl max-h-[94vh] bg-[#0b1329] border border-gray-800 rounded-2xl shadow-2xl overflow-hidden text-gray-100 flex flex-col">
+      <div className="w-full max-w-7xl max-h-[96vh] bg-[#0b1329] border border-gray-800 rounded-2xl shadow-2xl overflow-hidden text-gray-100 flex flex-col">
 
         {/* Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-800 bg-[#0d1630] shrink-0">
@@ -221,7 +223,7 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
         </div>
 
         {/* Tabs */}
-        <div className="flex overflow-x-auto gap-1 px-4 py-2 bg-[#0a1020] border-b border-gray-800 shrink-0 scrollbar-none">
+        <div className="flex flex-wrap gap-1 px-4 py-2 bg-[#0a1020] border-b border-gray-800 shrink-0 scrollbar-none">
           {tabs.map(tab => (
             <button
               key={tab.id}
@@ -241,6 +243,72 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
         {/* Content */}
         <form onSubmit={handleSave} className="flex-1 flex flex-col overflow-hidden min-h-0">
           <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 min-h-0">
+
+            {/* TAB: GENERAL */}
+            {activeTab === 'general' && (
+              <div className="space-y-5">
+                <SectionHeader icon={<Globe size={14} />} title="Identidad y textos principales" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Field label="Nombre de la marca" hint="Nombre principal que aparece en el portal">
+                    <input type="text" className={inputCls} value={formData.brandName ?? ''} onChange={e => handleChange('brandName', e.target.value)} />
+                  </Field>
+                  <Field label="Subtítulo de marca" hint="Texto secundario junto al nombre">
+                    <input type="text" className={inputCls} value={formData.brandTagline ?? ''} onChange={e => handleChange('brandTagline', e.target.value)} />
+                  </Field>
+                  <Field label="Texto superior del Hero" className="md:col-span-2">
+                    <input type="text" className={inputCls} value={formData.heroEyebrow ?? ''} onChange={e => handleChange('heroEyebrow', e.target.value)} />
+                  </Field>
+                </div>
+
+                <div className="border-t border-gray-900 pt-4">
+                  <SectionHeader icon={<Wrench size={14} />} title="Sección de herramientas" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Field label="Título" >
+                    <input type="text" className={inputCls} value={formData.toolsSectionTitle ?? ''} onChange={e => handleChange('toolsSectionTitle', e.target.value)} />
+                  </Field>
+                  <Field label="Descripción">
+                    <input type="text" className={inputCls} value={formData.toolsSectionDescription ?? ''} onChange={e => handleChange('toolsSectionDescription', e.target.value)} />
+                  </Field>
+                </div>
+
+                <div className="border-t border-gray-900 pt-4">
+                  <SectionHeader icon={<ListChecks size={14} />} title="Sección de servicios" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Field label="Título">
+                    <input type="text" className={inputCls} value={formData.servicesSectionTitle ?? ''} onChange={e => handleChange('servicesSectionTitle', e.target.value)} />
+                  </Field>
+                  <Field label="Descripción">
+                    <input type="text" className={inputCls} value={formData.servicesSectionDescription ?? ''} onChange={e => handleChange('servicesSectionDescription', e.target.value)} />
+                  </Field>
+                </div>
+
+                <div className="border-t border-gray-900 pt-4">
+                  <SectionHeader icon={<Mail size={14} />} title="Sección de contacto" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Field label="Título">
+                    <input type="text" className={inputCls} value={formData.contactSectionTitle ?? ''} onChange={e => handleChange('contactSectionTitle', e.target.value)} />
+                  </Field>
+                  <Field label="Descripción">
+                    <input type="text" className={inputCls} value={formData.contactSectionDescription ?? ''} onChange={e => handleChange('contactSectionDescription', e.target.value)} />
+                  </Field>
+                </div>
+
+                <div className="border-t border-gray-900 pt-4">
+                  <SectionHeader icon={<Type size={14} />} title="Pie de página" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Field label="Texto de copyright">
+                    <input type="text" className={inputCls} value={formData.footerCopyright ?? ''} onChange={e => handleChange('footerCopyright', e.target.value)} />
+                  </Field>
+                  <Field label="Crédito / desarrollador">
+                    <input type="text" className={inputCls} value={formData.footerCredit ?? ''} onChange={e => handleChange('footerCredit', e.target.value)} />
+                  </Field>
+                </div>
+              </div>
+            )}
 
             {/* TAB: CONTACTO */}
             {activeTab === 'contacto' && (
@@ -896,6 +964,28 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
                   <p><span className="text-gray-300 font-semibold">Infomaniak:</span> host <span className="font-mono text-yellow-500">mail.infomaniak.com</span>, puerto <span className="font-mono text-yellow-500">587</span></p>
                   <p><span className="text-gray-300 font-semibold">Gmail:</span> host <span className="font-mono text-yellow-500">smtp.gmail.com</span>, puerto <span className="font-mono text-yellow-500">587</span> (requiere contraseña de aplicación)</p>
                   <p><span className="text-gray-300 font-semibold">Outlook/Microsoft:</span> host <span className="font-mono text-yellow-500">smtp.office365.com</span>, puerto <span className="font-mono text-yellow-500">587</span></p>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: SEO / NAVEGADOR */}
+            {activeTab === 'seo' && (
+              <div className="space-y-5">
+                <SectionHeader icon={<Search size={14} />} title="SEO y configuración del navegador" />
+                <p className="text-[11px] text-gray-400 leading-relaxed">
+                  Estos datos controlan el título de la pestaña, la descripción para buscadores y el icono del sitio.
+                </p>
+                <Field label="Título SEO / título de la pestaña" hint="Recomendado: entre 50 y 60 caracteres">
+                  <input type="text" className={inputCls} value={formData.seoTitle ?? ''} onChange={e => handleChange('seoTitle', e.target.value)} />
+                </Field>
+                <Field label="Descripción SEO" hint="Descripción que pueden utilizar los buscadores">
+                  <textarea rows={3} className={inputCls + ' resize-none'} value={formData.seoDescription ?? ''} onChange={e => handleChange('seoDescription', e.target.value)} />
+                </Field>
+                <Field label="Favicon" hint="URL de una imagen PNG, JPG, SVG o ICO. Déjalo vacío para conservar el actual.">
+                  <input type="url" className={inputCls + ' font-mono'} placeholder="https://ejemplo.com/favicon.svg" value={formData.faviconUrl ?? ''} onChange={e => handleChange('faviconUrl', e.target.value)} />
+                </Field>
+                <div className="rounded-xl border border-gray-800 bg-gray-950/40 p-3 text-[10px] text-gray-400">
+                  <span className="text-gray-200 font-medium">Nota:</span> los cambios SEO se aplican al portal al guardar.
                 </div>
               </div>
             )}
