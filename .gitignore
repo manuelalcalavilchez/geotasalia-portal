@@ -1,0 +1,11 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+# Runtime data — contain credentials and user submissions
+portal_config.json
+consultas.json
