@@ -5,9 +5,11 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showText?: boolean;
   customLogoUrl?: string;
+  logoScale?: number;
+  logoHalo?: number;
 }
 
-export default function Logo({ className = '', size = 'md', showText = true, customLogoUrl }: LogoProps) {
+export default function Logo({ className = '', size = 'md', showText = true, customLogoUrl, logoScale = 100, logoHalo = 0 }: LogoProps) {
   const dimensions = {
     sm: { svgSize: 40, textSize: 'text-lg', subSize: 'text-[8px]' },
     md: { svgSize: 64, textSize: 'text-2xl', subSize: 'text-xs' },
@@ -26,9 +28,9 @@ export default function Logo({ className = '', size = 'md', showText = true, cus
         referrerPolicy="no-referrer"
         className="object-contain transition-transform duration-300 hover:scale-105"
         style={{
-          width: dimensions.svgSize,
-          height: dimensions.svgSize,
-          filter: 'drop-shadow(0px 2px 12px rgba(212,175,55,0.3))'
+          width: `${dimensions.svgSize * (logoScale / 100)}px`,
+          height: `${dimensions.svgSize * (logoScale / 100)}px`,
+          filter: logoHalo > 0 ? `drop-shadow(0px 2px 12px rgba(212,175,55,${Math.min(logoHalo, 100) / 100})` : 'none'
         }}
       />
 
