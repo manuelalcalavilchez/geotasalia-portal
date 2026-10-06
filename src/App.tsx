@@ -557,10 +557,10 @@ export default function App() {
             <div>
               <h2 className="text-xl font-bold text-white uppercase tracking-wider font-display flex items-center justify-center md:justify-start gap-2">
                 <span className="h-1.5 w-1.5 bg-yellow-500 rounded-full"></span>
-                Herramientas Técnicas y Enlaces Exclusivos
+                {config.toolsSectionTitle || 'Herramientas Técnicas y Enlaces Exclusivos'}
               </h2>
               <p className="text-xs text-gray-400 mt-1">
-                Utilidades de cartografía, planificación de salidas al campo y verificación rústica para clientes del gabinete:
+                {config.toolsSectionDescription || 'Utilidades de cartografía, planificación de salidas al campo y verificación rústica para clientes del gabinete:'}
               </p>
             </div>
             
@@ -626,7 +626,7 @@ export default function App() {
           <div className="text-center md:text-left">
             <h2 className="text-xl font-bold text-white uppercase tracking-wider font-display flex items-center justify-center md:justify-start gap-2">
               <span className="h-1.5 w-1.5 bg-yellow-500 rounded-full"></span>
-              Especialidades en Ingeniería Agrónoma y Consultoría
+              {config.servicesSectionTitle || 'Especialidades en Ingeniería Agrónoma y Consultoría'}
             </h2>
             <p className="text-xs text-gray-400 mt-1">{config.servicesSectionDescription || 'Servicios técnicos integrales adaptados a las normativas vigentes en España'}</p>
           </div>
@@ -719,10 +719,10 @@ export default function App() {
           <div className="lg:col-span-8 border border-gray-800 rounded-2xl bg-[#0b1329]/50 backdrop-blur-md shadow-lg p-6 md:p-8 space-y-6">
             <div>
               <h3 className="text-lg font-bold text-white uppercase tracking-wider font-display">
-                Formulario de Consulta Técnica
+                {config.contactSectionTitle || 'Formulario de Consulta Técnica'}
               </h3>
               <p className="text-xs text-gray-400 mt-1">
-                Háganos llegar sus dudas catastrales o necesidades de valoración para recibir respuesta en menos de 24 horas.
+                {config.contactSectionDescription || 'Háganos llegar sus dudas catastrales o necesidades de valoración para recibir respuesta en menos de 24 horas.'}
               </p>
             </div>
 
@@ -978,7 +978,7 @@ export default function App() {
               <Logo size="sm" showText={false} customLogoUrl={config.customLogoUrl} logoScale={config.logoScale} logoHalo={config.logoHalo} />
               <div>
                 <p className="text-xs font-bold text-white tracking-widest uppercase">GEOTASALIA</p>
-                <p className="text-[10px] text-gray-500">Gabinete de Ingeniería Agrónoma &copy; 2026. Todos los derechos reservados.</p>
+                <p className="text-[10px] text-gray-500">{config.brandName || 'GEOTASALIA'} &copy; 2026. {config.footerCopyright || 'Gabinete de Ingeniería Agrónoma'}. Todos los derechos reservados.</p>
               </div>
             </div>
 
@@ -998,7 +998,7 @@ export default function App() {
             
             {/* TECNOLOGIA ALCALA CREDIT SIGNATURE */}
             <p className="font-mono flex items-center gap-1 bg-gray-950/40 px-3 py-1.5 rounded-lg border border-gray-900/60 text-gray-500">
-              Desarrollada por <span className="text-yellow-500/80 font-bold tracking-wider hover:text-yellow-500 transition-colors">Tecnologia Alcalá</span>
+              {config.footerCredit || 'Desarrollada por Tecnologia Alcalá'}
             </p>
           </div>
         </div>
