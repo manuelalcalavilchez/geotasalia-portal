@@ -397,7 +397,7 @@ export default function App() {
           
           {/* Logo Header */}
           <div className="flex items-center gap-3">
-            <Logo size="sm" showText={false} customLogoUrl={config.customLogoUrl} />
+            <Logo size="sm" showText={false} customLogoUrl={config.customLogoUrl} logoScale={config.logoScale} logoHalo={config.logoHalo} />
             <div>
               <span className="font-sans font-bold text-white tracking-widest text-sm uppercase">GEOTASALIA</span>
               <span className="hidden sm:inline text-[10px] text-yellow-500 tracking-[0.2em] uppercase ml-2 border-l border-gray-800 pl-2">
@@ -475,7 +475,7 @@ export default function App() {
 
       {/* Hero Banner Section */}
       <header className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 text-center space-y-6">
-        <Logo size="lg" showText={true} customLogoUrl={config.customLogoUrl} />
+        <Logo size="lg" showText={true} customLogoUrl={config.customLogoUrl} logoScale={config.logoScale} logoHalo={config.logoHalo} />
         
         <div className="space-y-3">
           <p className="text-xs font-semibold tracking-[0.3em] text-yellow-500 uppercase">Gabinete Técnico Agropecuario</p>
@@ -952,7 +952,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-gray-900 pb-8">
             <div className="flex items-center gap-3">
-              <Logo size="sm" showText={false} customLogoUrl={config.customLogoUrl} />
+              <Logo size="sm" showText={false} customLogoUrl={config.customLogoUrl} logoScale={config.logoScale} logoHalo={config.logoHalo} />
               <div>
                 <p className="text-xs font-bold text-white tracking-widest uppercase">GEOTASALIA</p>
                 <p className="text-[10px] text-gray-500">Gabinete de Ingeniería Agrónoma &copy; 2026. Todos los derechos reservados.</p>
