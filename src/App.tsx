@@ -175,6 +175,29 @@ export default function App() {
     }).catch(() => {}); // fire-and-forget — localStorage already saved locally
   };
 
+  // Apply configurable browser/SEO metadata.
+  React.useEffect(() => {
+    document.title = config.seoTitle || DEFAULT_CONFIG.seoTitle || 'GEOTASALIA';
+    if (config.seoDescription) {
+      let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'description';
+        document.head.appendChild(meta);
+      }
+      meta.content = config.seoDescription;
+    }
+    if (config.faviconUrl) {
+      let icon = document.querySelector('link[rel="icon"]') as HTMLLinkElement | null;
+      if (!icon) {
+        icon = document.createElement('link');
+        icon.rel = 'icon';
+        document.head.appendChild(icon);
+      }
+      icon.href = config.faviconUrl;
+    }
+  }, [config.seoTitle, config.seoDescription, config.faviconUrl]);
+
   // Inject dynamic typography CSS whenever config.typography changes
   React.useEffect(() => {
     const typo = config.typography ?? DEFAULT_CONFIG.typography!;
@@ -399,9 +422,9 @@ export default function App() {
           <div className="flex items-center gap-3">
             <Logo size="sm" showText={false} customLogoUrl={config.customLogoUrl} logoScale={config.logoScale} logoHalo={config.logoHalo} />
             <div>
-              <span className="font-sans font-bold text-white tracking-widest text-sm uppercase">GEOTASALIA</span>
+              <span className="font-sans font-bold text-white tracking-widest text-sm uppercase">{config.brandName || 'GEOTASALIA'}</span>
               <span className="hidden sm:inline text-[10px] text-yellow-500 tracking-[0.2em] uppercase ml-2 border-l border-gray-800 pl-2">
-                Ingeniería Agrícola y Valoración
+                {config.brandTagline || 'Ingeniería Agrícola y Valoración'}
               </span>
             </div>
           </div>
@@ -478,7 +501,7 @@ export default function App() {
         <Logo size="lg" showText={true} customLogoUrl={config.customLogoUrl} logoScale={config.logoScale} logoHalo={config.logoHalo} />
         
         <div className="space-y-3">
-          <p className="text-xs font-semibold tracking-[0.3em] text-yellow-500 uppercase">Gabinete Técnico Agropecuario</p>
+          <p className="text-xs font-semibold tracking-[0.3em] text-yellow-500 uppercase">{config.heroEyebrow || 'Gabinete Técnico Agropecuario'}</p>
           <h2 className="text-2xl sm:text-3xl font-light text-white font-sans tracking-tight">
             {config.heroSubtitle || 'Ingeniería Agrícola & Valoraciones Rústicas'}
           </h2>
@@ -605,7 +628,7 @@ export default function App() {
               <span className="h-1.5 w-1.5 bg-yellow-500 rounded-full"></span>
               Especialidades en Ingeniería Agrónoma y Consultoría
             </h2>
-            <p className="text-xs text-gray-400 mt-1">Servicios técnicos integrales adaptados a las normativas vigentes en España</p>
+            <p className="text-xs text-gray-400 mt-1">{config.servicesSectionDescription || 'Servicios técnicos integrales adaptados a las normativas vigentes en España'}</p>
           </div>
 
           <div className={`grid grid-cols-1 gap-6 ${
