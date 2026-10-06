@@ -46,6 +46,8 @@ export interface ProjectConfig {
   rgpdDpd?: string;
   // Visual
   customLogoUrl?: string;
+  logoScale?: number;       // global logo size multiplier (50-180%)
+  logoHalo?: number;        // halo intensity (0-100%)
   theme?: 'navy-gold' | 'emerald-warm' | 'cyan-steel' | 'minimal-light' | 'minimalista' | 'flat' | 'material' | 'esqueumorfica' | 'retro' | 'brutalista' | 'neumorfismo' | 'glassmorphism' | 'dark-mode' | 'cyberpunk' | 'organica' | 'editorial' | 'abstracta' | 'geometrica' | '3d';
   // Hero contact
   contactPhone?: string;
