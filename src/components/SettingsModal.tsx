@@ -202,7 +202,7 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm">
-      <div className="w-full max-w-3xl max-h-[93vh] bg-[#0b1329] border border-gray-800 rounded-2xl shadow-2xl overflow-hidden text-gray-100 flex flex-col">
+      <div className="w-full max-w-6xl max-h-[94vh] bg-[#0b1329] border border-gray-800 rounded-2xl shadow-2xl overflow-hidden text-gray-100 flex flex-col">
 
         {/* Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-800 bg-[#0d1630] shrink-0">
