@@ -47,6 +47,22 @@ export const FONT_WEIGHTS: { label: string; value: string }[] = [
 export const SYSTEM_FONTS = new Set(['Inter', 'Georgia', 'Arial', 'Helvetica', 'system-ui']);
 
 export const DEFAULT_CONFIG: ProjectConfig = {
+  // General / branding
+  brandName: 'GEOTASALIA',
+  brandTagline: 'Ingeniería Agrícola y Valoración',
+  heroEyebrow: 'Gabinete Técnico Agropecuario',
+  toolsSectionTitle: 'Herramientas Técnicas y Enlaces Exclusivos',
+  toolsSectionDescription: 'Utilidades de cartografía, planificación de salidas al campo y verificación rústica para clientes del gabinete:',
+  servicesSectionTitle: 'Especialidades en Ingeniería Agrónoma y Consultoría',
+  servicesSectionDescription: 'Servicios técnicos integrales adaptados a las normativas vigentes en España',
+  contactSectionTitle: 'Formulario de Consulta Técnica',
+  contactSectionDescription: 'Háganos llegar sus dudas catastrales o necesidades de valoración para recibir respuesta en menos de 24 horas.',
+  footerCopyright: 'Gabinete de Ingeniería Agrónoma',
+  footerCredit: 'Desarrollada por Tecnologia Alcalá',
+  // SEO / browser
+  seoTitle: 'GEOTASALIA — Ingeniería Agrícola y Valoraciones Rústicas',
+  seoDescription: 'Gabinete técnico especializado en tasaciones, ingeniería agrícola, topografía, catastro y valoraciones rústicas.',
+  faviconUrl: '',
   kDriveUrl: 'https://kdrive.infomaniak.com/app/collaborate/2817260/c2b3831c-6495-4118-bad0-ac3a1d762559',
   externalGeovisorUrl: 'https://ovc.catastro.meh.es/',
   externalRutasUrl: 'https://www.google.com/maps',
