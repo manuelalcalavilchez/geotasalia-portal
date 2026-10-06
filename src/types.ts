@@ -43,6 +43,9 @@ export interface ProjectConfig {
   contactSectionDescription?: string;
   footerCopyright?: string;
   footerCredit?: string;
+  socialInstagram?: string;
+  socialLinkedIn?: string;
+  socialFacebook?: string;
   // SEO / browser
   seoTitle?: string;
   seoDescription?: string;
