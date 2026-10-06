@@ -621,6 +621,38 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
                     onChange={e => handleChange('customLogoUrl', e.target.value)}
                   />
                 </Field>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Field label={`Tamaño del logo: ${formData.logoScale ?? 120}%`} hint="Ajusta el tamaño sin modificar la imagen original">
+                    <input
+                      type="range"
+                      min="50"
+                      max="180"
+                      step="5"
+                      className="w-full accent-yellow-500"
+                      value={formData.logoScale ?? 120}
+                      onChange={e => setFormData(prev => ({ ...prev, logoScale: Number(e.target.value) }))}
+                    />
+                    <div className="flex justify-between text-[9px] text-gray-500 mt-1"><span>50%</span><span>100%</span><span>180%</span></div>
+                  </Field>
+
+                  <Field label={`Halo dorado: ${formData.logoHalo ?? 0}%`} hint="0% elimina completamente el resplandor de los bordes">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="5"
+                      className="w-full accent-yellow-500"
+                      value={formData.logoHalo ?? 0}
+                      onChange={e => setFormData(prev => ({ ...prev, logoHalo: Number(e.target.value) }))}
+                    />
+                    <div className="flex justify-between text-[9px] text-gray-500 mt-1"><span>Sin halo</span><span>50%</span><span>100%</span></div>
+                  </Field>
+                </div>
+
+                <div className="rounded-xl border border-gray-800 bg-gray-950/40 p-3 text-[10px] text-gray-400">
+                  <span className="text-gray-200 font-medium">Vista rápida:</span> guarda los cambios para aplicarlos al portal. El halo se controla desde aquí y no altera el archivo del logo.
+                </div>
               </div>
             )}
 
