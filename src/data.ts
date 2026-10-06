@@ -59,6 +59,8 @@ export const DEFAULT_CONFIG: ProjectConfig = {
   rgpdEmail: 'jorge.martinez@geotasalia.es',
   rgpdDpd: 'gestion@geotasalia.es',
   customLogoUrl: '',
+  logoScale: 120,
+  logoHalo: 0,
   theme: 'navy-gold',
   // Hero contact
   contactPhone: '633067650',
