@@ -30,7 +30,7 @@ export default function Logo({ className = '', size = 'md', showText = true, cus
         style={{
           width: `${dimensions.svgSize * (logoScale / 100)}px`,
           height: `${dimensions.svgSize * (logoScale / 100)}px`,
-          filter: logoHalo > 0 ? `drop-shadow(0px 2px 12px rgba(212,175,55,${Math.min(logoHalo, 100) / 100})` : 'none'
+          filter: logoHalo > 0 ? `drop-shadow(0px 2px 12px rgba(212,175,55,${Math.min(logoHalo, 100) / 100}))` : 'none'
         }}
       />
 
