@@ -28,8 +28,6 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
     }
   }, [isOpen, config]);
 
-  if (!isOpen) return null;
-
   const handleChange = (key: keyof ProjectConfig, value: string) => {
     setFormData(prev => ({ ...prev, [key]: value }));
   };
@@ -186,6 +184,8 @@ export default function SettingsModal({ isOpen, onClose, config, onSave }: Setti
       }
     });
   }, [typo.heading?.family, typo.body?.family, typo.ui?.family]);
+
+  if (!isOpen) return null;
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
     { id: 'contacto', label: 'Contacto', icon: <Phone size={13} /> },
